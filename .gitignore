@@ -1,0 +1,11 @@
+###> app ###
+.env
+/public/bundles/
+/public/media/
+/var/
+/vendor/
+/.idea/
+/node_modules/
+/public/Nginx-1.12_vhost.conf
+/composer.lock
+###< app ###
