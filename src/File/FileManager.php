@@ -80,7 +80,7 @@ class FileManager implements FileManagerInterface
      */
     private function getFileContent(): string
     {
-        return $this->params['type'] === 'json' ? json_encode($this->params['data']) : $this->params['data'];
+        return $this->params['type'] === 'json' ? $this->params['data'] : $this->params['data'];
     }
 
     /**

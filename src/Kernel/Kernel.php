@@ -24,13 +24,17 @@ class Kernel implements KernelInteface
      */
     public function handle(RequestInterface $request): ResponseInterface
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            return new Response(null, 200);
+        }
+
         try {
             $params = $request->getAll();
             $this->fileManager = new FileManager($params);
             $path = $this->fileManager->create();
             $response = new Response(['url' => $path], 200);
         } catch (\Exception $exception) {
-            $response = new Response(['message' => $exception->getMessage()], $exception->getCode());
+            $response = new Response(['error' => $exception->getMessage()], $exception->getCode());
         }
 
         return $response;
