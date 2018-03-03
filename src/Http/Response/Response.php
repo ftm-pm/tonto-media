@@ -76,6 +76,8 @@ class Response implements ResponseInterface
     public function send(): void
     {
         $this->setHeaders();
-        echo json_encode($this->data);
+        if ($this->data) {
+            echo json_encode($this->data);
+        }
     }
 }
